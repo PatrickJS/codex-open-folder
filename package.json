@@ -1,0 +1,22 @@
+{
+  "name": "open-in-codex-finder",
+  "version": "0.1.0",
+  "description": "Finder Quick Action for opening folders in the matching Codex Desktop chat or project.",
+  "type": "module",
+  "bin": {
+    "codex-open-folder": "./lib/codex-open-folder.mjs"
+  },
+  "files": [
+    "README.md",
+    "lib/",
+    "scripts/",
+    "test/"
+  ],
+  "scripts": {
+    "install:quick-action": "node scripts/install.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
