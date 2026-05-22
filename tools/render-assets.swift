@@ -312,7 +312,7 @@ func drawCodexWindow(_ canvas: Canvas, alpha: CGFloat) {
     NSGraphicsContext.saveGraphicsState()
     NSGraphicsContext.current?.cgContext.setAlpha(alpha)
     fillRound(canvas, 820, 132, 326, 430, 34, color(0x151a24, 0.98), stroke: color(0x4c5364, 0.85), lineWidth: 1.2)
-    drawCodexMark(canvas, 904, 172, 158)
+    drawCodexAppIcon(canvas, 886, 154, 194)
     drawText(canvas, "Codex", 842, 352, 282, 52, size: 46, weight: .heavy, color: color(0xffffff), align: .center)
     drawText(canvas, "Workspace opened", 856, 414, 254, 30, size: 22, weight: .semibold, color: color(0xcfd8ea), align: .center)
     fillRound(canvas, 864, 474, 238, 50, 14, color(0x273247, 0.92))
