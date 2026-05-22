@@ -1,10 +1,10 @@
-![Open in Codex Finder Quick Action demo](media/open-in-codex-demo.gif)
-
 # Open in Codex for Finder
 
 `Open in Codex` is a macOS Finder Quick Action for project folders.
 
-Right-click a folder, choose `Open in Codex`, and it opens Codex Desktop:
+![Open in Codex Finder Quick Action demo](media/open-in-codex-demo.gif)
+
+Right-click a folder, choose `Open in Codex`, and it routes to the best available Codex destination:
 
 - the newest existing Codex chat for that exact folder
 - the saved Codex project for that folder
