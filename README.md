@@ -4,6 +4,8 @@
 
 Right-click a folder, choose `Open in Codex`, and it opens the most useful Codex Desktop destination it can prove:
 
+![Open in Codex Finder Quick Action demo](media/open-in-codex-demo.gif)
+
 - the newest existing Codex chat for that exact folder
 - the saved Codex project for that folder
 - a prompt for new folders, with options to open the folder as a Codex project, open Codex without the folder, or cancel
@@ -47,6 +49,27 @@ The uninstaller removes only files this project owns:
 - `~/.codex/bin/codex-open-folder.zsh`
 - the old pre-zsh helper path, `~/.codex/bin/codex-open-folder.mjs`, if present
 - `~/.config/open-in-codex/fallback-mode`
+
+## Share Assets
+
+Use these when posting or linking to the project:
+
+- `media/open-in-codex-twitter-card.png`: simpler 1600x900 X/Twitter image with the larger Codex mark
+- `media/open-in-codex-demo.mp4`: more accurate 5 second 1280x720 Finder Quick Actions video for GitHub releases
+- `media/open-in-codex-demo.gif`: more accurate animated README preview
+- `media/open-in-codex-demo-poster.png`: more accurate 1280x720 still frame
+- `media/open-in-codex-card.png`: same image as the Twitter card, kept as a shorter filename
+
+To regenerate the assets:
+
+```bash
+swift -module-cache-path /private/tmp/swift-module-cache tools/render-assets.swift media /private/tmp/open-in-codex-media-frames
+ffmpeg -y -framerate 30 -i /private/tmp/open-in-codex-media-frames/frame%04d.png -vf "scale=1280:720:flags=lanczos" -c:v libx264 -pix_fmt yuv420p -movflags +faststart media/open-in-codex-demo.mp4
+ffmpeg -y -framerate 30 -i /private/tmp/open-in-codex-media-frames/frame%04d.png -vf "fps=15,scale=960:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96[p];[s1][p]paletteuse=dither=bayer:bayer_scale=3" media/open-in-codex-demo.gif
+```
+
+The renderer is only for project media. Installing or using the Finder Quick Action does not require Swift or ffmpeg.
+The Codex mark in these generated assets is a vector approximation, not an extracted application icon file.
 
 ## Install With Codex
 
@@ -151,3 +174,4 @@ plutil -lint /private/tmp/open-in-codex-install-test/Library/Services/Open\ in\ 
 - `install.zsh`: installs the helper and Automator workflow
 - `uninstall.zsh`: removes files owned by this project
 - `test/run.zsh`: behavior tests for routing and fallback mode
+- `tools/render-assets.swift`: source for the README and social media graphics
