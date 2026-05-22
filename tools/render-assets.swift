@@ -199,6 +199,19 @@ func drawCodexMark(_ canvas: Canvas, _ x: CGFloat, _ y: CGFloat, _ size: CGFloat
     NSGraphicsContext.restoreGraphicsState()
 }
 
+func drawCodexAppIcon(_ canvas: Canvas, _ x: CGFloat, _ y: CGFloat, _ size: CGFloat, alpha: CGFloat = 1) {
+    let iconPath = "/Applications/Codex.app/Contents/Resources/icon.icns"
+    guard let icon = NSImage(contentsOfFile: iconPath) else {
+        drawCodexMark(canvas, x, y, size, alpha: alpha)
+        return
+    }
+
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current?.cgContext.setAlpha(alpha)
+    icon.draw(in: canvas.rect(x, y, size, size), from: .zero, operation: .sourceOver, fraction: 1)
+    NSGraphicsContext.restoreGraphicsState()
+}
+
 func drawFinder(_ canvas: Canvas) {
     fillRound(canvas, 86, 94, 548, 432, 20, color(0x11151c, 0.96), stroke: color(0x3b404b))
     fillRect(canvas, 86, 94, 548, 58, color(0x171c24, 0.96))
@@ -330,7 +343,7 @@ func drawSocialCard(width: CGFloat, height: CGFloat) -> NSImage {
     fillRect(canvas, 452, 468, 380, 1, color(0xffffff, 0.14))
     drawMenuRow(canvas, "Open in Codex", 420, 500, 444, highlighted: true, icon: "C")
 
-    drawCodexMark(canvas, 942, 234, 230)
+    drawCodexAppIcon(canvas, 930, 216, 254)
     drawText(canvas, "Codex", 894, 500, 326, 58, size: 52, weight: .heavy, color: color(0xffffff), align: .center)
     drawText(canvas, "Workspace opened", 904, 566, 306, 30, size: 22, weight: .semibold, color: color(0xcfd8ea), align: .center)
 

@@ -69,7 +69,7 @@ ffmpeg -y -framerate 30 -i /private/tmp/open-in-codex-media-frames/frame%04d.png
 ```
 
 The renderer is only for project media. Installing or using the Finder Quick Action does not require Swift or ffmpeg.
-The Codex mark in these generated assets is a vector approximation, not an extracted application icon file.
+The Twitter card uses the local Codex app icon when `/Applications/Codex.app` is installed; otherwise the renderer falls back to a vector approximation.
 
 ## Install With Codex
 
